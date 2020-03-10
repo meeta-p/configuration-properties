@@ -2,14 +2,14 @@ server:
   port: 9090
 
 spring:
-	cloud:
-		gateway:
-			routes:
-				- id: service-1
-				  uri: http://localhost:8082/
-				  predicates:
-				  	- Path=/service-1/**
-				- id: service-2
-				  uri: http://localhost:8081/
-				  predicates:
-				  	- Path=/service-2/**
+  cloud:
+    gateway:
+      routes:
+        - id: service-1
+          uri: http://localhost:8082/
+          predicates:
+            - Path=/service-1/**
+        - id: service-2
+          uri: http://localhost:8081/
+          predicates:
+            - Path=/service-2/**
