@@ -1,0 +1,63 @@
+hystrix.command.fallbackcmd.execution.isolation.thread.timeoutInMilliseconds: 2000
+
+server:
+  port: 8088
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+    register-with-eureka: false
+  instance:
+    preferIpAddress: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: notificationservice
+          uri: lb://notificationservice
+          predicates:
+          - Path=/notificationservice/**
+          filters:
+          - RewritePath=/notificationservice/(?<remains>.*), /$\{remains}
+          - AddRequestHeader=X-forward-Header, notificationservice    
+        - id: activitymanager
+          uri: lb://activitymanager
+          predicates:
+          - Path=/activitymanager/**
+          filters:
+          - RewritePath=/activitymanager/(?<remains>.*), /$\{remains}
+          - AddRequestHeader=X-forward-Header, activitymanager 
+        - id: eventchannel
+          uri: lb://eventchannel
+          predicates:
+          - Path=/eventchannel/**
+          filters:
+          - RewritePath=/eventchannel/(?<remains>.*), /$\{remains}
+          - AddRequestHeader=X-forward-Header, eventchannel
+        - id: auditservice
+          uri: lb://auditservice
+          predicates:
+          - Path=/auditservice/**
+          filters:
+          - RewritePath=/auditservice/(?<remains>.*), /$\{remains}
+          - AddRequestHeader=X-forward-Header, auditservice    
+        - id: usermanagement
+          uri: lb://usermanagement
+          predicates:
+          - Path=/usermanagement/**
+          filters:
+          - RewritePath=/usermanagement/(?<remains>.*), /$\{remains}
+          - AddRequestHeader=X-forward-Header, usermanagement                 
+           
+           
+           
