@@ -1,6 +1,5 @@
-ascent:
-    rabbitmq:
-        exchange: ascent.main.exchange
+ascent.rabbitmq.exchange: ascent.main.exchange
+
 eureka:
     client:
         service-url:
