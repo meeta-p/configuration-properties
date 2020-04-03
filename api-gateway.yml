@@ -57,7 +57,14 @@ spring:
           - Path=/usermanagement/**
           filters:
           - RewritePath=/usermanagement/(?<remains>.*), /$\{remains}
-          - AddRequestHeader=X-forward-Header, usermanagement                 
+          - AddRequestHeader=X-forward-Header, usermanagement
+        - id: baselineservice
+          uri: lb://baselineservice
+          predicates:
+          - Path=/baselineservice/**
+          filters:
+          - RewritePath=/baselineservice/(?<remains>.*), /$\{remains}
+          - AddRequestHeader=X-forward-Header, baselineservice                            
            
            
            
