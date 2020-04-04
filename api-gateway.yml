@@ -47,7 +47,6 @@ spring:
           filters:
           - RewritePath=/activitymanager/(?<remains>.*), /$\{remains}
           - AddRequestHeader=X-forward-Header, activitymanager
-          - JWTFilter=jwt,check
         - id: eventchannel
           uri: lb://eventchannel
           predicates:
