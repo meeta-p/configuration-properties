@@ -1,5 +1,14 @@
 hystrix.command.fallbackcmd.execution.isolation.thread.timeoutInMilliseconds: 2000
 
+urllist:
+  list:
+    - SEG1
+    - SEG2
+
+
+
+
+
 server:
   port: 8088
 
