@@ -7,8 +7,6 @@ urllist:
 
 
 
-
-
 server:
   port: 8088
 
@@ -30,6 +28,8 @@ management:
 ascent:
     rabbitmq:
         exchange: ascent.main.exchange
+    jwt:
+        secret: ascent123        
      
 
 spring:
