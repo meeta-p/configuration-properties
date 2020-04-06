@@ -2,8 +2,8 @@ hystrix.command.fallbackcmd.execution.isolation.thread.timeoutInMilliseconds: 20
 
 urllist:
   list:
-    - SEG1
-    - SEG2
+    - /activitymanager/api/task/createAndAssignTask
+    - URL2
 
 
 
